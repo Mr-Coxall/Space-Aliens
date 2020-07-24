@@ -7,15 +7,16 @@
 import ugame
 import stage
 
-# image banks for CircuitPython
-image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
-image_bank_sprites = stage.Bank.from_bmp16("space_aliens.bmp")
 
-# a list of sprites that will be updated every frame
-sprites = []
+def game_scene():
+    # this function is the main game scene
+    
+    # image banks for CircuitPython
+    image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
+    image_bank_sprites = stage.Bank.from_bmp16("space_aliens.bmp")
 
-def main():
-    # this function shows 2 sprites on a background
+    # a list of sprites that will be updated every frame
+    sprites = []
     
     # sets the background to image 0 in the image bank
     background = stage.Grid(image_bank_background, 10, 8)
@@ -48,4 +49,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    game_scene()
