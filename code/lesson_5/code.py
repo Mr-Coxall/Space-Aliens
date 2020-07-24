@@ -37,7 +37,7 @@ def main():
     
     # create a stage for the background to show up on
     #   and set the frame rate to 60fps
-    game = stage.Stage(ugame.display, 60)
+    game = stage.Stage(ugame.display, constants.FPS)
     # set the layers, items show up in order
     game.layers = sprites + [background]
     # render the background and initial location of sprite list
