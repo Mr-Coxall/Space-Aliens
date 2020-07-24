@@ -7,7 +7,7 @@
 import ugame
 import stage
 
-# an image bank for CircuitPython
+# image banks for CircuitPython
 image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
 image_bank_sprites = stage.Bank.from_bmp16("space_aliens.bmp")
 
@@ -15,11 +15,9 @@ image_bank_sprites = stage.Bank.from_bmp16("space_aliens.bmp")
 sprites = []
 
 def main():
-    # this function a single background tile
+    # this function shows 2 sprites on a background
     
-    # sets the background to image 2 in the image bank (space ship)
-    # if your 0 image is magenta, your background will most likely be distorted
-    # backgrounds do not have magenta as a transparent color
+    # sets the background to image 0 in the image bank
     background = stage.Grid(image_bank_background, 10, 8)
     
     # create a sprite
