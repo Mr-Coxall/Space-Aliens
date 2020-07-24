@@ -2,7 +2,7 @@
 
 # Created by: Mr. Coxall
 # Created on: July 2020
-# This program is the "Space Aliens" program on the PyBadge
+# This program is the "Space Aliens" game on the PyBadge
 
 import ugame
 import stage
@@ -10,15 +10,21 @@ import stage
 import constants
 
 
-# image banks for CircuitPython
-image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
-image_bank_sprites = stage.Bank.from_bmp16("space_aliens.bmp")
-
-# a list of sprites that will be updated every frame
-sprites = []
-
-def main():
-    # this function shows 2 sprites on a background
+def game_scene():
+    # this function is the main game scene
+    
+    # image banks for CircuitPython
+    image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
+    image_bank_sprites = stage.Bank.from_bmp16("space_aliens.bmp")
+    
+    # buttons that you want to keep state information on
+    a_button = constants.button_state["button_up"]
+    b_button = constants.button_state["button_up"]
+    start_button = constants.button_state["button_up"]
+    select_button = constants.button_state["button_up"]
+    
+    # a list of sprites that will be updated every frame
+    sprites = []
     
     # sets the background to image 0 in the image bank
     background = stage.Grid(image_bank_background, constants.SCREEN_X, 
@@ -49,6 +55,7 @@ def main():
         # get user input
         keys = ugame.buttons.get_pressed()
         
+        # A button to fire
         if keys & ugame.K_X != 0:
             print("A")
         if keys & ugame.K_O != 0:
@@ -83,4 +90,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    game_scene()
