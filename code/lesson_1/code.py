@@ -4,14 +4,17 @@
 # Created on: July 2020
 # This program is the "Space Aliens" program on the PyBadge
 
-def main():
-    # this function prints to the screen and console
+
+def game_scene():
+    # this function is the main game scene
+    
     print("\n\n\n") # 3 blank lines
     print("Hello, World!")
     
     while True:
         # repeat forever, or you turn it off!
         pass # just a place holder
-    
+
+
 if __name__ == "__main__":
-    main()
+    game_scene()
