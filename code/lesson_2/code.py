@@ -13,14 +13,10 @@ def game_scene():
     
     # image banks for CircuitPython
     image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
-
-    # a list of sprites that will be updated every frame
-    sprites = []
     
     # sets the background to image 0 in the image bank
+    #   and the sie (10x8 tiles of size 16x16)
     background = stage.Grid(image_bank_background, 10, 8)
-    # 4 is the x tile spot, 3 is the y tile spot, 2 is the tile image number
-    background.tile(4, 3, 2) # x, y, image number
     
     # create a stage for the background to show up on
     #   and set the frame rate to 60fps
