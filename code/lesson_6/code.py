@@ -2,7 +2,7 @@
 
 # Created by: Mr. Coxall
 # Created on: July 2020
-# This program is the "Space Aliens" game on the PyBadge
+# This program is the "Space Aliens" program on the PyBadge
 
 import ugame
 import stage
@@ -29,29 +29,21 @@ def game_scene():
     sound.stop()
     sound.mute(False)
     
-    # a list of sprites that will be updated every frame
-    sprites = []
-    
     # sets the background to image 0 in the image bank
-    background = stage.Grid(image_bank_background, constants.SCREEN_X, 
-                            constants.SCREEN_Y)
+    #   and the sie (10x8 tiles of size 16x16)
+    background = stage.Grid(image_bank_background, 10, 8)
     
-    # create a sprite
-    # parameters (image_bank, image # in bank, x, y)
+    ship = stage.Sprite(image_bank_sprites, 5, 75, constants.SCREEN_Y - (2 * constants.SPRITE_SIZE))
+    
     alien = stage.Sprite(image_bank_sprites, 9, 
-                         int(constants.SCREEN_X / 2 - constants.SPRITE_SIZE / 2),
-                         int(constants.SCREEN_Y / 2 - constants.SPRITE_SIZE / 2))
-    sprites.append(alien) 
-    ship = stage.Sprite(image_bank_sprites, 5,
-                        int(constants.SCREEN_X / 2 - constants.SPRITE_SIZE / 2),
-                        int(constants.SCREEN_Y - 16))
-    sprites.insert(0, ship) # insert at top of sprite list
-    
+                     int(constants.SCREEN_X / 2 - constants.SPRITE_SIZE / 2),
+                     16)
+                     
     # create a stage for the background to show up on
     #   and set the frame rate to 60fps
-    game = stage.Stage(ugame.display, constants.FPS)
+    game = stage.Stage(ugame.display, 60)
     # set the layers, items show up in order
-    game.layers = sprites + [background]
+    game.layers = [ship] + [alien] + [background]
     # render the background and initial location of sprite list
     # most likely you will only render background once per scene
     game.render_block()
@@ -62,7 +54,7 @@ def game_scene():
         keys = ugame.buttons.get_pressed()
         
         # A button to fire
-        if keys & ugame.K_X != 0:
+        if keys & ugame.K_O != 0:
             if a_button == constants.button_state["button_up"]:
                 a_button = constants.button_state["button_just_pressed"]
             elif a_button == constants.button_state["button_just_pressed"]:
@@ -72,9 +64,9 @@ def game_scene():
                 a_button = constants.button_state["button_released"]
             else:
                 a_button = constants.button_state["button_up"]
-        
-        if keys & ugame.K_O != 0:
-            print("B")
+        # B button
+        if keys & ugame.K_X != 0:
+            pass
         if keys & ugame.K_START != 0:
             print("Start")
         if keys & ugame.K_SELECT != 0:
@@ -102,9 +94,9 @@ def game_scene():
         if a_button == constants.button_state["button_just_pressed"]:
             sound.play(pew_sound)
         
-        # redraw sprite list
-        game.render_sprites(sprites)
-        game.tick() # wait until refresh rate finishes
+        # redraw Sprites 
+        game.render_sprites([ship] + [alien])
+        game.tick()
 
 
 if __name__ == "__main__":
