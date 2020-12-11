@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Created by: Mr. Coxall
-# Created on: July 2020
+# Created on: Sep 2020
 # This program is the "Space Aliens" program on the PyBadge
 
 import ugame
@@ -54,7 +54,7 @@ def game_scene():
         keys = ugame.buttons.get_pressed()
         
         # A button to fire
-        if keys & ugame.K_O != 0:
+        if keys & ugame.K_X != 0:
             if a_button == constants.button_state["button_up"]:
                 a_button = constants.button_state["button_just_pressed"]
             elif a_button == constants.button_state["button_just_pressed"]:
@@ -65,7 +65,7 @@ def game_scene():
             else:
                 a_button = constants.button_state["button_up"]
         # B button
-        if keys & ugame.K_X != 0:
+        if keys & ugame.K_O != 0:
             pass
         if keys & ugame.K_START != 0:
             print("Start")
