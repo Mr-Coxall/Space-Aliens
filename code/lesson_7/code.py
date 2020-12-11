@@ -13,21 +13,17 @@ import constants
 def menu_scene():
     # this function is the menu scene
     
-    # new pallet for blue filled text
-    NEW_PALETTE = (b'\xff\xff\x00\x22\xcey\x22\xff\xff\xff\xff\xff\xff\xff\xff\xff'
-                   b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff')
-    
     # image banks for CircuitPython
     image_bank_mt_background = stage.Bank.from_bmp16("mt_game_studio.bmp")
     
     # add text objects
     text = []
-    text1 = stage.Text(width=29, height=12, font=None, palette=NEW_PALETTE, buffer=None)
+    text1 = stage.Text(width=29, height=12, font=None, palette=constants.RED_PALETTE, buffer=None)
     text1.move(20, 10)
     text1.text("MT Game Studios")
     text.append(text1)
     
-    text2 = stage.Text(width=29, height=12, font=None, palette=NEW_PALETTE, buffer=None)
+    text2 = stage.Text(width=29, height=12, font=None, palette=constants.RED_PALETTE, buffer=None)
     text2.move(40, 110)
     text2.text("PRESS START")
     text.append(text2)
